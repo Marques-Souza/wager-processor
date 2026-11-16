@@ -1,0 +1,35 @@
+{
+  "name": "wager-processor",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "bun dist/main.js",
+    "start:dev": "bun --watch src/main.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "bun test",
+    "db:migration:create": "mikro-orm migration:create --config ./src/infrastructure/persistence/mikro-orm.config.ts",
+    "db:migration:up": "mikro-orm migration:up --config ./src/infrastructure/persistence/mikro-orm.config.ts",
+    "db:migration:down": "mikro-orm migration:down --config ./src/infrastructure/persistence/mikro-orm.config.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-sqs": "^3.800.0",
+    "@mikro-orm/core": "^6.4.16",
+    "@mikro-orm/migrations": "^6.4.16",
+    "@mikro-orm/nestjs": "^6.1.1",
+    "@mikro-orm/postgresql": "^6.4.16",
+    "@nestjs/common": "^11.0.12",
+    "@nestjs/core": "^11.0.12",
+    "@nestjs/platform-express": "^11.0.12",
+    "decimal.js": "^10.5.0",
+    "pg": "^8.13.3",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@mikro-orm/cli": "^6.4.16",
+    "@types/node": "^22.13.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
