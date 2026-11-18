@@ -3,7 +3,7 @@ import { defineConfig } from '@mikro-orm/postgresql';
 
 export default defineConfig({
   host: process.env.DB_HOST ?? 'localhost',
-  port: Number.parseInt(process.env.DB_PORT ?? '5432', 10),
+  port: Number.parseInt(process.env.DB_PORT ?? '5433', 10),
   dbName: process.env.DB_NAME ?? 'wager_processor',
   user: process.env.DB_USER ?? 'wager',
   password: process.env.DB_PASSWORD ?? 'wager_dev_only',

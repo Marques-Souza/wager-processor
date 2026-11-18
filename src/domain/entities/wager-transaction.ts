@@ -21,6 +21,7 @@ export enum WagerTransactionStatus {
 export type FailureCode =
   | 'INSUFFICIENT_FUNDS'
   | 'REFERENCE_NOT_FOUND'
+  | 'REFERENCE_NOT_PROCESSED'
   | 'REFERENCE_MISMATCH'
   | 'REFERENCE_ALREADY_REVERSED'
   | 'REVERSAL_WOULD_OVERDRAW'

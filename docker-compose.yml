@@ -6,7 +6,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-wager}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-wager_dev_only}
     ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+      - "${POSTGRES_PORT:-5433}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -22,6 +22,8 @@ services:
       AWS_DEFAULT_REGION: ${AWS_REGION:-us-east-1}
     ports:
       - "${LOCALSTACK_PORT:-4566}:4566"
+    volumes:
+      - ./scripts/localstack-init.sh:/etc/localstack/init/ready.d/ready.sh:ro
 
 volumes:
   postgres_data:

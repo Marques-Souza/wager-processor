@@ -8,6 +8,7 @@
     "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "bun test",
+    "test:integration": "bun test ./test/integration/wagering.integration.ts",
     "db:migration:create": "mikro-orm migration:create --config ./src/infrastructure/persistence/mikro-orm.config.ts",
     "db:migration:up": "mikro-orm migration:up --config ./src/infrastructure/persistence/mikro-orm.config.ts",
     "db:migration:down": "mikro-orm migration:down --config ./src/infrastructure/persistence/mikro-orm.config.ts"
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@mikro-orm/cli": "^6.4.16",
     "@types/bun": "^1.4.4",
+    "@types/express": "^5.0.6",
     "@types/node": "^22.13.10",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
