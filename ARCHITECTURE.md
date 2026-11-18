@@ -50,7 +50,7 @@
   WIN ou REFUND. Referências devem compartilhar provider, player, wallet,
   moeda e rodada. Reversões são de valor integral e só uma por tipo/referência.
 - Reversão que causaria saldo negativo é `REJECTED/REVERSAL_WOULD_OVERDRAW`.
-  Outros códigos estáveis incluem `REFERENCE_NOT_FOUND`, `REFERENCE_MISMATCH`
+  Outros códigos estáveis incluem `REFERENCE_NOT_FOUND`, `REFERENCE_MISMATCH`,
   `REFERENCE_NOT_PROCESSED` e `REFERENCE_ALREADY_REVERSED`.
 - Ausência de referência persiste `PENDING_REFERENCE`. Worker reconsulta com
   backoff exponencial até 60 segundos; após 24 horas rejeita com
@@ -80,6 +80,10 @@ no formato Prometheus; os valores são mantidos por processo e reiniciam com ele
 
 ## Limitações conhecidas
 
+- `WageringService` concentra o fluxo de submissão e a coordenação da
+  persistência via `EntityManager`/SQL. Com mais tempo, eu extrairia partes do
+  fluxo (idempotência, resolução de referências e efeitos no saldo/outbox) em
+  componentes menores, preservando a transação e as invariantes no banco.
 - Os logs HTTP de submissão, consumidor SQS, outbox e reconciliação são JSON e
   carregam correlationId e identificadores disponíveis. Rotas de consulta e
   alguns erros gerais de workers ainda não têm logs operacionais completos.

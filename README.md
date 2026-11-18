@@ -21,6 +21,16 @@ bun run db:migration:up
 bun run start:dev
 ```
 
+Em Linux ou macOS, na raiz do repositório:
+
+```sh
+[ -f .env ] || cp .env.example .env
+bun install
+docker compose up -d
+bun run db:migration:up
+bun run start:dev
+```
+
 A API escuta em `http://localhost:3000`. O Compose sobe PostgreSQL e LocalStack;
 a aplicação roda no host. O LocalStack provisiona as filas FIFO de entrada,
 eventos e dead-letter durante a inicialização. O PostgreSQL usa a porta host
