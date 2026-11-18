@@ -5,6 +5,8 @@ export interface MoneyProps {
   currency: string;
 }
 
+
+
 export class CurrencyMismatchError extends Error {
   constructor() {
     super('Cannot operate on different currencies');
@@ -16,7 +18,7 @@ export class Money {
   private constructor(
     private readonly value: Decimal,
     public readonly currency: string,
-  ) {}
+  ) { }
 
   static from(props: MoneyProps): Money {
     const { amount, currency } = props;
